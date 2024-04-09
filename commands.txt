@@ -1,0 +1,7 @@
+git init AdmebaasidKuzmina - создали папку
+git config --global user.name "Polina Kuzmina"
+git config --global user.email "polina.tigrica@gmail.com"
+git config --global --list
+git status
+git add .  - для отслеживания
+git commit -a -m "Põhi sõnad on lisatud" - !комиты не должны повторяться!

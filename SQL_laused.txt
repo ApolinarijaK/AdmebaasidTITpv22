@@ -1,0 +1,70 @@
+MS SQL management studio 
+ Server name: localdb/() ja windows  Autentication
+
+
+--tabeli loomine
+--primary key- annab unikaalne väärtus 
+
+USE KuzminaTITpv22;
+CREATE TABLE oppeaine(
+oppeaineID int Primary key identity(1,1),
+nimetus varchar(50) UNIQUE,
+kestvus int NOT NULL,
+kirjeldus Text,
+algus_kuupaev date);
+--kuva/näita tabeli
+SELECT * FROM oppeaine
+
+--Andmete lisamine tabeli sisse
+INSERT INTO oppeaine(
+nimetus, kestvus, algus_kuupaev, kirjeldus)
+VALUES(
+'Andmebaasid', 200, '2024-04-9', 'Rakenduserverite moodul');
+SELECT * FROM oppeaine;
+
+INSERT INTO oppeaine(
+nimetus, kestvus, algus_kuupaev, kirjeldus)
+VALUES(
+'Tootmisseadmed', 200, '2024-03-9', 'andurid');
+SELECT * FROM oppeaine;
+
+--tabeli kustutamine DROP table *tabli nimi
+
+--tabel opetaja
+USE KuzminaTITpv22;
+CREATE TABLE opetaja(
+opetajaID int Primary key identity(1,1),
+eesnimi varchar(50),
+perekonnanimi varchar(50) NOT NULL,
+sunniaeg date,
+kirjeldus Text,
+kontakt varchar(50));
+--kuva/näita tabeli
+SELECT * FROM opetaja;
+
+INSERT INTO opetaja(
+eesnimi, perekonnanimi, kontakt)
+VALUES(
+'Mihail', 'Agapov', '46748614688');
+SELECT * FROM opetaja;
+
+--andmete uuendamine
+UPDATE opetaja SET sunniaeg='2000-10-10';
+
+
+--andmete uuendamine
+UPDATE opetaja SET sunniaeg='1999-10-10'
+WHERE opetajaID=1;
+
+--tabeli muutmine veergu lisamine 
+--ALTER table *tabli nimi + *teise tabel
+--ForKey-->PrKey
+ALTER table oppeaine ADD opetajaID int;
+SELECT * FROM oppeaine;
+SELECT * FROM opetaja;
+
+UPDATE oppeaine SET opetajaID=1;
+
+--Foreign key lisamine tabeli sisse
+ALTER table oppeaine 
+ADD FOREIGN KEY (opetajaID) REFERENCES opetaja(opetajaID);

@@ -5,3 +5,6 @@ git config --global --list
 git status
 git add .  - для отслеживания
 git commit -a -m "Põhi sõnad on lisatud" - !комиты не должны повторяться!
+git remote add origin https://github.com/ApolinarijaK/AdmebaasidTITpv22.git - прикрепить к репозиторию
+git branch -M main
+git push -u origin main
